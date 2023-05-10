@@ -1,6 +1,7 @@
 import validate from 'validate.js'
 import RoomList from "../services/room-list"
 import roomDictionnaryObject from '../services/rooms.json'
+import { getStartingItems } from './spoiler'
 
 const roomList = new RoomList(roomDictionnaryObject)
 
@@ -34,7 +35,8 @@ function newSave(spoilerJson) {
         visitedProvinces: ['Ordona Province'],
         activatedWarps: [],
         currentRoom: roomList.getRoom("Ordon Province"),
-        checkedHints: {}
+        checkedHints: {},
+        itemsObtained: getStartingItems(spoilerObject).map((itemName) => itemName.replaceAll('_', ' '))
     }
     window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(saveState))
 
@@ -51,7 +53,7 @@ function editSave(saveState) {
     }
 
     let newSaveState = getSave()
-    const properties = ['checkedLocations', 'peekedLocations', 'visitedProvinces', 'activatedWarps', 'currentRoom', 'checkedHints']
+    const properties = ['checkedLocations', 'peekedLocations', 'visitedProvinces', 'activatedWarps', 'currentRoom', 'checkedHints', 'itemsObtained']
     properties.forEach(property => {
         if (saveState[property] !== undefined) {
             newSaveState[property] = saveState[property]

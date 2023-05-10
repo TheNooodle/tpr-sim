@@ -105,6 +105,7 @@ function compileRoomDictionnary(folder) {
     })
 
     // Override for Plumm and Iza
+    let currentRoom = null
     if ((currentRoom = roomDictionnaryObject['Lake Hylia']) !== undefined) {
         currentRoom.checks = currentRoom.checks.filter((room) => {
             return room.name != "Iza Helping Hand" && room.name != "Iza Raging Rapids Minigame"

@@ -14,7 +14,8 @@ const warpList = {
     "Lake Hylia": "lanayruTwilightCleared",
     "Zoras Domain": "lanayruTwilightCleared",
     "Snowpeak Summit": null,
-    "Gerudo Desert": null
+    "Gerudo Desert": null,
+    "Mirror Chamber": null,
 }
 
 function isAWarpRoom(roomName) {

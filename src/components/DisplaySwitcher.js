@@ -1,14 +1,20 @@
-import { faHand, faLocationDot, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faHand, faLocationDot, faMagnifyingGlass, faShieldHalved } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useDisplayModeStore from "../store/display-mode"
 
 function DisplaySwitcher(props) {
     const currentDisplayMode = useDisplayModeStore((state) => state.displayMode)
+    const displayTracker = useDisplayModeStore((state) => state.displayTracker)
     const displayChecks = useDisplayModeStore((state) => state.displayChecks)
     const displayTransitions = useDisplayModeStore((state) => state.displayTransitions)
     const displayHints = useDisplayModeStore((state) => state.displayHints)
 
     const displayModes = [
+        {
+            mode: "tracker",
+            icon: faShieldHalved,
+            action: displayTracker
+        },
         {
             mode: "checks",
             icon: faHand,

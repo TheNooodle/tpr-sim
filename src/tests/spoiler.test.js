@@ -1,4 +1,4 @@
-const { checkLocation, checkHint, getBasicHint, isExcluded, getSettingValue } = require('../src/services/spoiler')
+const { checkLocation, checkHint, getBasicHint, isExcluded, getSettingValue } = require('../services/spoiler')
 const fs = require('fs')
 
 const spoilerJson = fs.readFileSync(__dirname + '/example_seed.json', 'utf-8')

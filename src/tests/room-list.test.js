@@ -1,4 +1,4 @@
-const { RoomList } = require('../src/services/room-list')
+import RoomList from "../services/room-list"
 
 const roomList = new RoomList({
     'Lost Woods': {

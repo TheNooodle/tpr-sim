@@ -1,4 +1,4 @@
-const { compileRoomDictionnary } = require('../src/services/room-compiler')
+const { compileRoomDictionnary } = require('../services/room-compiler')
 
 test('compileRoomDictionnary() should read a directory and compile valid room files into one object', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {})

@@ -89,4 +89,8 @@ function getSettingValue(spoilerObject, settingName) {
     return spoilerObject.settings[settingName]
 }
 
-export { checkLocation, checkHint, getBasicHint, isExcluded, getSettingValue }
+function getStartingItems(spoilerObject) {
+    return getSettingValue(spoilerObject, "startingItems")
+}
+
+export { checkLocation, checkHint, getBasicHint, isExcluded, getSettingValue, getStartingItems }

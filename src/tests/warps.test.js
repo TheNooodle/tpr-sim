@@ -1,4 +1,4 @@
-const { isActive, getAvailableWarps } = require('../src/services/warps')
+const { isActive, getAvailableWarps } = require('../services/warps')
 
 const spoilerObject = {
     "settings": {

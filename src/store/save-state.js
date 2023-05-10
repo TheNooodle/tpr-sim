@@ -15,6 +15,7 @@ const useSaveStateStore = create((set) => ({
     activatedWarps: saveState ? saveState.activatedWarps : null,
     currentRoom: saveState ? saveState.currentRoom : null,
     checkedHints: saveState ? saveState.checkedHints : null,
+    itemsObtained: saveState ? saveState.itemsObtained : null,
     uploadSpoiler: (spoilerJson) => set((state) => {
         const saveState = newSave(spoilerJson)
 
@@ -26,6 +27,7 @@ const useSaveStateStore = create((set) => ({
             activatedWarps: saveState.activatedWarps,
             currentRoom: saveState.currentRoom,
             checkedHints: saveState.checkedHints,
+            itemsObtained: saveState.itemsObtained,
         }
     }),
     deleteSave: () => set((state) => {
@@ -39,6 +41,7 @@ const useSaveStateStore = create((set) => ({
             activatedWarps: null,
             currentRoom: null,
             checkedHints: null,
+            itemsObtained: null,
         }
     }),
     checkLocation: (locationName) => set((state) => {
@@ -99,7 +102,17 @@ const useSaveStateStore = create((set) => ({
         return {
             checkedHints: newHints
         }
-    })
+    }),
+    obtainItem: (itemName) => set((state) => {
+        const itemsObtained = state.itemsObtained.concat([itemName])
+        const saveState = editSave({
+            itemsObtained: itemsObtained
+        })
+
+        return {
+            itemsObtained: saveState.itemsObtained
+        }
+    }),
 }))
 
 export default useSaveStateStore

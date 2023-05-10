@@ -1,4 +1,4 @@
-const { newSave, editSave, deleteSave } = require('../src/services/save')
+const { newSave, editSave, deleteSave } = require('../services/save')
 const fs = require('fs')
 
 beforeEach(() => {
