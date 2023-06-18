@@ -1,4 +1,4 @@
-import ItemIcon from "./ItemIcon"
+import ItemIcon from "./ItemIcon.js"
 import rodIcon from "../images/rod.png"
 import earRingIcon from "../images/earring.png"
 import slingshotIcon from "../images/slingshot.png"
@@ -43,7 +43,7 @@ import bigWalletIcon from "../images/bigwallet.png"
 import giantWalletIcon from "../images/giantwallet.png"
 import colossalWalletIcon from "../images/colossalwallet.png"
 import gateKeysIcon from "../images/gatekeys.png"
-import DungeonIcon from "./DungeonIcon"
+import DungeonIcon from "./DungeonIcon.js"
 
 const itemIconDictionnary = [
     {

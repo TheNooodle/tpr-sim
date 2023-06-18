@@ -2,8 +2,8 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import fusedShadowIcon from "../images/shadow.png"
 import shardIcon from "../images/shard.png"
-import useSaveStateStore from "../store/save-state"
-import { getSettingValue } from "../services/spoiler"
+import useSaveStateStore from "../store/save-state.js"
+import { getSettingValue } from "../services/spoiler.js"
 
 function DungeonIcon(props) {
     const dungeonName = props.dungeonName

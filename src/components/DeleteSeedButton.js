@@ -1,6 +1,6 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import useSaveStateStore from "../store/save-state"
+import useSaveStateStore from "../store/save-state.js"
 
 function DeleteSeedButton(props) {
     const deleteSave = useSaveStateStore((state) => state.deleteSave)

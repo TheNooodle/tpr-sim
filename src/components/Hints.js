@@ -1,8 +1,8 @@
 import { faAngleRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { getBasicHint } from "../services/spoiler"
-import useDisplayModeStore from "../store/display-mode"
-import useSaveStateStore from "../store/save-state"
+import { getBasicHint } from "../services/spoiler.js"
+import useDisplayModeStore from "../store/display-mode.js"
+import useSaveStateStore from "../store/save-state.js"
 
 function Hints(props) {
     const spoilerLog = useSaveStateStore((state) => state.spoilerLog)

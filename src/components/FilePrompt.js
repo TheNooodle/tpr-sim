@@ -1,4 +1,4 @@
-import useSaveStateStore from "../store/save-state";
+import useSaveStateStore from "../store/save-state.js";
 
 function FilePrompt(props) {
     const uploadSpoiler = useSaveStateStore((state) => state.uploadSpoiler)

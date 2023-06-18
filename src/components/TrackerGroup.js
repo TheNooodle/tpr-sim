@@ -1,8 +1,8 @@
 import { useState } from "react"
-import useDisplayModeStore from "../store/display-mode"
-import ItemTracker from "./ItemTracker"
-import KeysTracker from "./KeysTracker"
-import GoldenBugTracker from "./GoldenBugTracker"
+import useDisplayModeStore from "../store/display-mode.js"
+import ItemTracker from "./ItemTracker.js"
+import KeysTracker from "./KeysTracker.js"
+import GoldenBugTracker from "./GoldenBugTracker.js"
 
 function TrackerGroup(props) {
     const [currentTab, setCurrentTab] = useState("item")

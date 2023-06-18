@@ -1,12 +1,12 @@
-import useSaveStateStore from "../store/save-state";
-import useLastActionStore from "../store/last-action"
-import Hints from "./Hints"
-import CheckList from "./CheckList"
-import TransitionList from "./TransitionList";
-import WarpList from "./WarpList";
-import DisplaySwitcher from "./DisplaySwitcher";
-import DeleteSeedButton from "./DeleteSeedButton";
-import TrackerGroup from "./TrackerGroup";
+import useSaveStateStore from "../store/save-state.js";
+import useLastActionStore from "../store/last-action.js"
+import Hints from "./Hints.js"
+import CheckList from "./CheckList.js"
+import TransitionList from "./TransitionList.js";
+import WarpList from "./WarpList.js";
+import DisplaySwitcher from "./DisplaySwitcher.js";
+import DeleteSeedButton from "./DeleteSeedButton.js";
+import TrackerGroup from "./TrackerGroup.js";
 
 
 function Simulator(props) {

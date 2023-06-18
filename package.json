@@ -1,6 +1,7 @@
 {
   "name": "tpr-sim",
   "version": "0.2.0",
+  "type": "module",
   "private": false,
   "homepage": "https://thenooodle.github.io/tpr-sim",
   "dependencies": {

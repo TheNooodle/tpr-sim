@@ -1,5 +1,5 @@
-import { getSettingValue } from './spoiler'
-import { getRoomProvince } from './provinces'
+import { getSettingValue } from './spoiler.js'
+import { getRoomProvince } from './provinces.js'
 
 const warpList = {
     "Ordon Province": "skipPrologue",

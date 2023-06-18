@@ -1,7 +1,7 @@
 import validate from 'validate.js'
-import RoomList from "../services/room-list"
+import RoomList from "../services/room-list.js"
 import roomDictionnaryObject from '../services/rooms.json'
-import { getStartingItems } from './spoiler'
+import { getStartingItems } from './spoiler.js'
 
 const roomList = new RoomList(roomDictionnaryObject)
 

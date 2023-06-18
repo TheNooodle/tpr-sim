@@ -1,7 +1,7 @@
 import { readdirSync, statSync, readFileSync } from 'fs'
 import { join, basename, parse } from 'path'
 import { validate } from 'validate.js'
-import { getRoomProvince } from './provinces'
+import { getRoomProvince } from './provinces.js'
 
 const peekableChecks = [
     "Arbiters Grounds Stallord Heart Container",
@@ -68,34 +68,69 @@ function getAllFiles(folder, allFiles) {
 
 function compileRoomDictionnary(folder) {
     let roomDictionnaryObject = {}
+    let roomFiles = []
+    let checkFilesDictionnary = {}
     const files = getAllFiles(folder)
-    const constraints = {
+    const roomFileConstraints = {
         "Neighbours": {presence: true, type: "array"},
         "Checks": {presence: true, type: "array"},
+        "NeighbourRequirements": {presence: true, type: "array"},
     }
-    
+    const checkFileConstraints = {
+        "requirements": {presence: true, type: "string"},
+    }
     files.forEach((file) => {
+        try {
+            const fileContentObject = JSON.parse(readFileSync(file))
+            const fileName = basename(file)
+            const roomOrCheckName = parse(fileName).name
+            if (validate(fileContentObject, roomFileConstraints) === undefined) {
+                roomFiles.push(file)
+            } else if (validate(fileContentObject, checkFileConstraints) === undefined) {
+                checkFilesDictionnary[roomOrCheckName] = file
+            } else {
+                throw new Error("Validation error")
+            }
+        } catch (e) {
+            console.error("Cannot read file " + file + ": " + e)
+        }
+    })
+
+    roomFiles.forEach((file) => {
         try {
             const roomObject = JSON.parse(readFileSync(file))
             const fileName = basename(file)
             const roomName = parse(fileName).name
-            if (validate(roomObject, constraints) !== undefined) {
-                throw new Error("Validation error")
-            }
             const province = getRoomProvince(roomName)
 
             const checkNames = roomObject.Checks.filter((checkName) => {
                 return checkName !== ""
             })
-            const checks = checkNames.map((checkName) => ({
-                name: checkName,
-                peekable: peekableChecks.includes(checkName),
-                forceTransition: forcedTransitions[checkName] !== undefined ? forcedTransitions[checkName] : null
-            }))
+            const checks = checkNames.map((checkName) => {
+                let requirements = null
+                if (checkFilesDictionnary[checkName] !== undefined) {
+                    const checkFileContent = JSON.parse(readFileSync(checkFilesDictionnary[checkName]))
+                    requirements = checkFileContent.requirements
+                }
+
+                return {
+                    name: checkName,
+                    peekable: peekableChecks.includes(checkName),
+                    forceTransition: forcedTransitions[checkName] !== undefined ? forcedTransitions[checkName] : null,
+                    requirements: requirements
+                }
+            })
+            let neighbours = []
+            roomObject.Neighbours.forEach((neighbourName, index) => {
+                neighbours.push({
+                    name: neighbourName,
+                    requirements: roomObject.NeighbourRequirements[index]
+                })
+            })
 
             roomDictionnaryObject[roomName] = {
                 name: roomName,
-                neighbours: roomObject.Neighbours,
+                neighbours: neighbours,
                 checks: checks,
                 province: province
             }
@@ -110,25 +145,43 @@ function compileRoomDictionnary(folder) {
         currentRoom.checks = currentRoom.checks.filter((room) => {
             return room.name != "Iza Helping Hand" && room.name != "Iza Raging Rapids Minigame"
         })
+        let requirements = null
+        if (checkFilesDictionnary["Plumm Fruit Balloon Minigame"] !== undefined) {
+            const checkFileContent = JSON.parse(readFileSync(checkFilesDictionnary["Plumm Fruit Balloon Minigame"]))
+            requirements = checkFileContent.requirements
+        }
         currentRoom.checks.push({
             name: "Plumm Fruit Balloon Minigame",
             peekable: false,
-            forceTransition: "Zoras Domain"
+            forceTransition: "Zoras Domain",
+            requirements: requirements
         })
     }
     if ((currentRoom = roomDictionnaryObject['Zoras Domain']) !== undefined) {
         currentRoom.checks = currentRoom.checks.filter((room) => {
             return room.name != "Plumm Fruit Balloon Minigame"
         })
+        let requirements = null
+        if (checkFilesDictionnary["Iza Helping Hand"] !== undefined) {
+            const checkFileContent = JSON.parse(readFileSync(checkFilesDictionnary["Iza Helping Hand"]))
+            requirements = checkFileContent.requirements
+        }
         currentRoom.checks.push({
             name: "Iza Helping Hand",
             peekable: false,
-            forceTransition: "Lake Hylia"
+            forceTransition: "Lake Hylia",
+            requirements: requirements
         })
+        requirements = null
+        if (checkFilesDictionnary["Iza Raging Rapids Minigame"] !== undefined) {
+            const checkFileContent = JSON.parse(readFileSync(checkFilesDictionnary["Iza Raging Rapids Minigame"]))
+            requirements = checkFileContent.requirements
+        }
         currentRoom.checks.push({
             name: "Iza Raging Rapids Minigame",
             peekable: false,
-            forceTransition: "Lake Hylia"
+            forceTransition: "Lake Hylia",
+            requirements: requirements
         })
     }
 

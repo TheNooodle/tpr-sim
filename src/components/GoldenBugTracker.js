@@ -1,4 +1,4 @@
-import ItemIcon from "./ItemIcon"
+import ItemIcon from "./ItemIcon.js"
 import goldenBugIcon from "../images/goldenbug.png"
 
 const goldenBugDictionnary = [

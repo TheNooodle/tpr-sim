@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { getAvailableWarps, isAWarpRoom, isActive } from "../services/warps"
-import useDisplayModeStore from "../store/display-mode"
-import useSaveStateStore from "../store/save-state"
-import Warp from "./Warp"
+import { getAvailableWarps, isAWarpRoom, isActive } from "../services/warps.js"
+import useDisplayModeStore from "../store/display-mode.js"
+import useSaveStateStore from "../store/save-state.js"
+import Warp from "./Warp.js"
 import { faToggleOn } from "@fortawesome/free-solid-svg-icons"
 
 function WarpList(props) {

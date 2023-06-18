@@ -1,8 +1,8 @@
 import { create } from "zustand"
-import { checkHint as checkHintInSpoiler } from "../services/spoiler";
-import RoomList from "../services/room-list"
+import { checkHint as checkHintInSpoiler } from "../services/spoiler.js";
+import RoomList from "../services/room-list.js"
 import roomDictionnaryObject from '../services/rooms.json'
-import { newSave, editSave, getSave, deleteSave } from "../services/save";
+import { newSave, editSave, getSave, deleteSave } from "../services/save.js";
 
 const saveState = getSave()
 const roomList = new RoomList(roomDictionnaryObject)

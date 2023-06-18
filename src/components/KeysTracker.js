@@ -4,7 +4,7 @@ import minesKeyIcon from "../images/mineskey.png"
 import bedroomKeyIcon from "../images/bedroomkey.png"
 import pumpkinIcon from "../images/pumpkin.png"
 import cheeseIcon from "../images/cheese.png"
-import DungeonKeys from "./DungeonKeys"
+import DungeonKeys from "./DungeonKeys.js"
 
 const keysDictionnary = [
     {

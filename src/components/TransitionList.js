@@ -1,13 +1,13 @@
-import useDisplayModeStore from "../store/display-mode"
-import useSaveStateStore from "../store/save-state"
-import Transition from "./Transition"
+import useDisplayModeStore from "../store/display-mode.js"
+import useSaveStateStore from "../store/save-state.js"
+import Transition from "./Transition.js"
 
 function TransitionList(props) {
     const currentRoom = useSaveStateStore((state) => state.currentRoom)
     const displayMode = useDisplayModeStore((state) => state.displayMode)
 
     const transitions = currentRoom.neighbours.map((neighbour) =>
-        <Transition key={neighbour} neighbour={neighbour}/>
+        <Transition key={neighbour.name} neighbour={neighbour}/>
     )
 
     return (

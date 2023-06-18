@@ -1,6 +1,6 @@
 import { faHand, faLocationDot, faMagnifyingGlass, faShieldHalved } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import useDisplayModeStore from "../store/display-mode"
+import useDisplayModeStore from "../store/display-mode.js"
 
 function DisplaySwitcher(props) {
     const currentDisplayMode = useDisplayModeStore((state) => state.displayMode)

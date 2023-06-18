@@ -1,4 +1,4 @@
-import ItemIcon from "./ItemIcon"
+import ItemIcon from "./ItemIcon.js"
 
 function DungeonKeys(props) {
     const name = props.name

@@ -1,4 +1,4 @@
-import useSaveStateStore from "../store/save-state"
+import useSaveStateStore from "../store/save-state.js"
 import chestOpened from "../images/chest_open.png"
 
 function ItemIcon(props) {
