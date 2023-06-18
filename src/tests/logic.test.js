@@ -111,3 +111,8 @@ test('checkLogic() should properly handle logic operands', () => {
     expect(checkLogic("CanCompleteIntro and (Lantern or Shadow_Crystal)", saveObject)).toBeTruthy()
     expect(checkLogic("canSmash and (Progressive_Dominion_Rod, 2) and Shadow_Crystal and canLeaveForest", saveObject)).toBeFalsy()
 })
+
+test('checkLogic() should work properly in complex scenarios, known to bug the application', () => {
+    // Iza Helping Hand
+    expect(checkLogic("(Progressive_Bow, 1) and Room.Zoras_Domain and (HasSword or (CanDefeatShadowBeast and (Setting.transformAnywhere equals True)))", saveObject)).toBeTruthy()
+})

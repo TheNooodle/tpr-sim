@@ -134,6 +134,7 @@ function parseBoolean(tokenDictionnary, saveObject) {
         return parseBool
     } else if (tokenDictionnary.current().type == "room") {
         // @todo: figure out a way to properly implement this
+        tokenDictionnary.next()
         return true
     }
 
